@@ -1,4 +1,4 @@
-from typing import List, Dict, Optional, Union, Set
+from typing import List, Dict
 
 class Point:
     def __init__(self, x: int, y: int, height: int):
@@ -6,7 +6,7 @@ class Point:
         self.y: int = y
         self.height: int = height
         
-        self.neighbours: Dict[str, Optional['Point']] = {
+        self.neighbours: Dict[str, 'Point'] = {
             "up": None,
             "down": None,
             "left": None,
@@ -19,7 +19,7 @@ class Point:
         self.neighbours["left"] = map_2d[self.y][self.x-1] if self.x > 0 else None
         self.neighbours["right"] = map_2d[self.y][self.x+1] if self.x < len(map_2d[0]) - 1 else None
     
-    def getNeighbour(self, direction: str) -> Optional['Point']:
+    def getNeighbour(self, direction: str) -> 'Point':
         return self.neighbours[direction]
     
     def getReachableGoals(self) -> int:

@@ -1,4 +1,4 @@
-from typing import List, Dict, Union, Set
+from typing import List, Dict, Set
 
 class Point:
     def __init__(self, x: int, y: int, height: int):
