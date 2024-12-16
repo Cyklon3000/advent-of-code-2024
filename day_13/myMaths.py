@@ -216,6 +216,9 @@ class Vector2i:
         if isinstance(scalar, float):
             return Vector2(self.x * scalar, self.y * scalar)
         raise TypeError(f"Cannot multiply {self.__name__} with {type(scalar)}")
+
+    def __rmul__(self, other):
+        return self.__mul__(other)
     
     def __truediv__(self, scalar: int) -> Vector2:
         return Vector2i(self.x / scalar, self.y / scalar)

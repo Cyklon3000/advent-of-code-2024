@@ -24,7 +24,7 @@ def get_claw_machine(machine_description: str) -> ClawMachine:
     
     return machine
 
-with open("day_13/testinput.txt") as file:
+with open("day_13/input.txt") as file:
     for machine_description in file.read().split("\n\n"):
         machines.append(get_claw_machine(machine_description))
 
@@ -41,5 +41,5 @@ for machine in machines:
         print(f"✅ Minimum Cost: {cost}")
     print('\n')
 
-print(f"\n{'-'*20}")
+print(f"{20*'-'}")
 print("Total Cost:", totalCost)

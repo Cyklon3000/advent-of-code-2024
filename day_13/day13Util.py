@@ -33,24 +33,21 @@ class ClawMachine:
     
     # PART 1 (brute-force)
     def get_minimum_cost(self) -> int:
-        minimum_cost: int = 999999 # Start at cost above our max cost to replace with 0 later
+        minimum_cost: int = None
         
         for button_presses_A in range(0, 100+1):
             for button_presses_B in range(0, 100+1):
-                cost = button_presses_A + button_presses_B
-                if cost > 100:
+                if button_presses_A > 100 or button_presses_B > 100:
                     break
                 
                 resulting_claw_position = \
-                    self.button_A_movement * button_presses_A + \
-                    self.button_B_movement * button_presses_B
-                print(resulting_claw_position.x)
-                if resulting_claw_position.x == 8400: 
-                    print(f"With {button_presses_A} A Presses and {button_presses_B} B Presses: ")
-                    print(f"{resulting_claw_position} was reached")
+                    button_presses_A * self.button_A_movement + \
+                    button_presses_B * self.button_B_movement
                 if resulting_claw_position != self.prize_position:
                     continue
                 
-                minimum_cost = min(cost, minimum_cost)
+                cost = ClawMachine.BUTTON_A_PRICE * button_presses_A + ClawMachine.BUTTON_B_PRICE * button_presses_B
+                if minimum_cost == None or minimum_cost > cost:
+                    minimum_cost = cost
         
-        return 0 if minimum_cost > 100 else minimum_cost
+        return 0 if minimum_cost == None else minimum_cost
